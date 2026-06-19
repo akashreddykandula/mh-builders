@@ -1,0 +1,187 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #0F172A;
+    color: #F8FAFC;
+    overflow-x: hidden;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  ::selection {
+    background: rgba(212, 160, 23, 0.3);
+    color: #F8FAFC;
+  }
+}
+
+@layer components {
+  .section-padding {
+    @apply py-20 px-4 sm:px-6 lg:px-8;
+  }
+
+  .container-max {
+    @apply max-w-7xl mx-auto;
+  }
+
+  .gold-text {
+    @apply text-transparent bg-clip-text;
+    background-image: linear-gradient(135deg, #D4A017 0%, #F0BF2A 50%, #B8860B 100%);
+  }
+
+  .gold-border {
+    @apply border border-yellow-600/30;
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.04);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(212, 160, 23, 0.15);
+  }
+
+  .gold-gradient-btn {
+    background: linear-gradient(135deg, #D4A017 0%, #F0BF2A 50%, #B8860B 100%);
+    @apply text-navy font-semibold transition-all duration-300;
+  }
+
+  .gold-gradient-btn:hover {
+    background: linear-gradient(135deg, #F0BF2A 0%, #D4A017 50%, #D4A017 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(212, 160, 23, 0.4);
+  }
+
+  .section-label {
+    @apply text-xs font-mono tracking-[0.25em] uppercase text-yellow-500;
+  }
+
+  .section-heading {
+    font-family: 'Playfair Display', serif;
+    @apply text-3xl sm:text-4xl lg:text-5xl font-bold text-white leading-tight;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #0F172A;
+}
+::-webkit-scrollbar-thumb {
+  background: #D4A017;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #F0BF2A;
+}
+
+/* Slick overrides */
+.slick-dots li button:before {
+  color: #D4A017 !important;
+}
+.slick-dots li.slick-active button:before {
+  color: #D4A017 !important;
+}
+
+/* Gold shimmer animation */
+@keyframes goldShimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+.shimmer-gold {
+  background: linear-gradient(90deg, #D4A017 25%, #F0BF2A 50%, #D4A017 75%);
+  background-size: 200% auto;
+  animation: goldShimmer 3s linear infinite;
+}
+
+/* Floating WhatsApp pulse */
+@keyframes waPulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.5); }
+  70% { box-shadow: 0 0 0 15px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+.wa-pulse {
+  animation: waPulse 2s infinite;
+}
+
+/* Reveal animations */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Accordion */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease;
+}
+.accordion-content.open {
+  max-height: 500px;
+}
+
+/* Nav transition */
+.nav-scrolled {
+  background: rgba(15, 23, 42, 0.97) !important;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  padding-top: 0.5rem !important;
+  padding-bottom: 0.5rem !important;
+}
+
+/* Project card overlay */
+.project-overlay {
+  background: linear-gradient(to top, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.3) 60%, transparent 100%);
+}
+
+/* Hero pattern overlay */
+.hero-pattern {
+  background-image: 
+    linear-gradient(rgba(15, 23, 42, 0.75) 0%, rgba(15, 23, 42, 0.6) 50%, rgba(15, 23, 42, 0.9) 100%);
+}
+
+/* Timeline connector */
+.timeline-dot::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 100%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 60px;
+  background: linear-gradient(180deg, #D4A017, transparent);
+}
+
+/* Service card */
+.service-card {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.service-card:hover {
+  transform: translateY(-8px);
+}
+.service-card:hover .service-icon {
+  background: linear-gradient(135deg, #D4A017 0%, #F0BF2A 100%);
+  color: #0F172A;
+}
